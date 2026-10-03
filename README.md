@@ -25,15 +25,15 @@ I nomi dei compiti seguono il formato `hwAAMMGG` (anno, mese, giorno della conse
 
 ## Compiti
 
-#### hw260924: funzioni con output crescente in n
+### hw260924: funzioni con output crescente in n
 
-**Consegna:** scrivere cinque o sei funzioni Python che, dato in input un intero n, restituiscono una lista (o una lista di liste) di dimensione crescente in n, via via più complesse.
+* **Consegna:** scrivere cinque o sei funzioni Python che, dato in input un intero n, restituiscono una lista (o una lista di liste) di dimensione crescente in n, via via più complesse.
 
-#### hw260930: verifica con Nagini
+### hw260930: verifica con Nagini
 
-**Consegna:** annotare con Nagini le funzioni di hw260924 per derivare statement sulla lunghezza dell'output in funzione di n.
+* **Consegna:** annotare con Nagini le funzioni di hw260924 per derivare statement sulla lunghezza dell'output in funzione di n.
 
-Il notebook `hw2.ipynb` contiene anche l'elenco dei tentativi fatti su triangolo e dei relativi errori.
+* Il notebook `hw2.ipynb` contiene anche l'elenco dei tentativi fatti su triangolo e dei relativi errori.
 
 ## Ambienti
 
