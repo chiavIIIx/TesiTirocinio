@@ -1,0 +1,21 @@
+# Libri e documenti
+*.pdf
+*.epub
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# Cache di Nagini e mypy
+.mypy_cache/
+.mypy_cache_strict/
+.mypy_cache_nonstrict/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Impostazioni locali di VS Code (contengono percorsi del tuo computer)
+.vscode/
