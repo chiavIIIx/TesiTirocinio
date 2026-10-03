@@ -3,7 +3,7 @@
 Materiale per tesi e tirocinio: verifica formale di codice Python con Nagini e studio del calcolo quantistico con Qiskit.
 
 ## Struttura della cartella
-
+* I nomi dei compiti seguono il formato `hwAAMMGG` (anno, mese, giorno della consegna).
 ```
 tesi_tirocinio/
 ├── README.md
@@ -11,17 +11,10 @@ tesi_tirocinio/
 ├── hw/                          compiti assegnati dal relatore
 │   ├── hw260924.py              consegna del 24/09/2026
 │   └── hw260930/                consegna del 30/09/2026
-│       ├── f1.py
-│       ├── nFibonacci.py
-│       ├── triangolo.py
-│       ├── prova.py
-│       └── hw2.ipynb
 ├── libriQuantum/                libri (non su git)
 ├── qiskit-pocket-guide-main/    codice di esempio del Qiskit Pocket Guide
 └── EilersMueller18.pdf          paper di Nagini (non su git)
 ```
-
-I nomi dei compiti seguono il formato `hwAAMMGG` (anno, mese, giorno della consegna).
 
 ## Compiti
 
@@ -54,8 +47,6 @@ Esito atteso: `Verification successful`, oppure l'elenco degli errori con riga e
 
 - **Warning "relevancy must be enabled to use option CASE_SPLIT"**: viene da Z3, è innocuo e si può ignorare.
 - **Crash "'NoneType' object has no attribute 'path'"**: cancellare le cache di Nagini con `rm -rf .mypy_cache_strict .mypy_cache_nonstrict` nella cartella da cui si lancia Nagini.
-- **Non chiamare un file `test.py`**: va in conflitto con il pacchetto `test` della libreria standard.
-- **Import sbagliati aggiunti dall'editor**: controllare che non compaia `from ast import Assert`. L'`Assert` giusto arriva già da `from nagini_contracts.contracts import *`.
 - **Tempi di verifica di 15-25 secondi anche per funzioni banali**: è il costo fisso di avvio (JVM, Viper, Z3), non dipende dal codice.
 
 ## Letture
