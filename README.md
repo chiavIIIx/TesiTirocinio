@@ -26,7 +26,6 @@ tesi_tirocinio/
 
 * **Consegna:** annotare con Nagini le funzioni di hw260924 per derivare statement sulla lunghezza dell'output in funzione di n.
 
-* Il notebook `hw2.ipynb` contiene anche l'elenco dei tentativi fatti su triangolo e dei relativi errori.
 
 ## Ambienti
 
