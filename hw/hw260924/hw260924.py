@@ -1,3 +1,8 @@
+#---------------------------------
+# Scrivi cinque o sei funzioni python che dato in input un intero n, 
+# producono output una lista (o lista di liste) di dimensioni crescenti in n
+#---------------------------------
+
 from typing import List
 
 # inserisce in una lista i numeri da 0 a n-1
