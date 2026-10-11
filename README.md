@@ -30,7 +30,7 @@ tesi_tirocinio/
 
 ### hw261008: programmi di prova in Qiskit
 
-* **Consegna:** familiarizzare con la programmazione in Qiskit tramite semplici programmi Python, seguendo il *Qiskit Pocket Guide*; in parallelo capire il concetto di stub per le librerie, che servirà per "insegnare" a Nagini cosa sono i circuiti (il circuito gioca il ruolo della lista). Per ora senza usare Nagini.
+* **Consegna:** familiarizzare con la programmazione in Qiskit tramite semplici programmi Python, seguendo il *Qiskit Pocket Guide*; in parallelo capire il concetto di stub per le librerie, che servirà per "insegnare" a Nagini cosa sono i circuiti (il circuito gioca il ruolo della lista).
 
 ## Ambienti
 
