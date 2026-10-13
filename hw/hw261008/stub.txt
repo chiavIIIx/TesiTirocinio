@@ -1,0 +1,1 @@
+Uno stub è un file che descrive cosa mette a disposizione una libreria, senza spiegare come funziona internamente.
