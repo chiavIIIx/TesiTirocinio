@@ -7921,7 +7921,7 @@ a.anchor-link {
 <li>esprime le condizioni che gli argomenti devono rispettare; Nagini controlla che ogni chiamata le soddisfi</li>
 <li>con <code>Acc</code> il metodo riceve il permesso di leggere o scrivere i campi<ul>
 <li>In <code>def x(...)</code> senza <code>Acc(self.num_qubits, ...)</code> non si potrebbe scrivere la condizione <code>qubit &lt; self.num_qubits</code>, perché leggere un campo richiede il permesso -&gt; è garantito da <code>Acc(self.num_qubits, 1/2)</code></li>
-<li>permesso 1/2 -&gt; solo lettura</li>
+<li>permesso 1/2 (qualsiasi frazione minore di 1) -&gt; solo lettura</li>
 <li>permesso 1 -&gt; lettura e scrittura</li>
 </ul>
 </li>
