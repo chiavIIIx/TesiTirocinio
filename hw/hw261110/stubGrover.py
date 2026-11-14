@@ -96,3 +96,51 @@ class QuantumCircuit:
         Ensures(self.gates == Old(self.gates) + 1)
         
         self.gates = self.gates + 1
+
+    def inverse(self) -> 'QuantumCircuit':
+        Requires(Acc(self.num_qubits, 1/4) and Acc(self.num_clbits, 1/4) and Acc(self.gates, 1/4))
+        Requires(self.num_qubits > 0 and self.num_clbits >= 0)
+
+        Ensures(Acc(self.num_qubits, 1/4) and Acc(self.num_clbits, 1/4) and Acc(self.gates, 1/4))
+        Ensures(Acc(Result().num_qubits) and Acc(Result().num_clbits) and Acc(Result().gates))
+        Ensures(Result().num_qubits == self.num_qubits)
+        Ensures(Result().num_clbits == self.num_clbits)
+        Ensures(Result().gates == self.gates)
+
+        inv = QuantumCircuit(self.num_qubits, self.num_clbits)
+        inv.gates = self.gates
+        return inv
+    
+    def compose(self, other: 'QuantumCircuit') -> None:
+        Requires(Acc(self.num_qubits, 1/4) and Acc(self.gates))
+        Requires(Acc(other.num_qubits, 1/4) and Acc(other.gates, 1/4))
+        Requires(other.num_qubits <= self.num_qubits)
+
+        Ensures(Acc(self.num_qubits, 1/4) and Acc(self.gates))
+        Ensures(Acc(other.num_qubits, 1/4) and Acc(other.gates, 1/4))
+        Ensures(self.gates == Old(self.gates) + other.gates)
+
+        self.gates = self.gates + other.gates
+
+    def power(self, k: int) -> 'QuantumCircuit':
+        Requires(Acc(self.num_qubits, 1/2) and Acc(self.num_clbits, 1/2) and Acc(self.gates, 1/2))
+        Requires(self.num_qubits > 0 and self.num_clbits >= 0)
+        Requires(k >= 0)
+
+        Ensures(Acc(self.num_qubits, 1/2) and Acc(self.num_clbits, 1/2) and Acc(self.gates, 1/2))
+        Ensures(Acc(Result().num_qubits) and Acc(Result().num_clbits) and Acc(Result().gates))
+        Ensures(Result().num_qubits == self.num_qubits)
+        Ensures(Result().num_clbits == self.num_clbits)
+        Ensures(Result().gates == k * self.gates)
+
+        rep = QuantumCircuit(self.num_qubits, self.num_clbits)
+        i = 0
+        while i < k:
+            Invariant(Acc(self.num_qubits, 1/2) and Acc(self.num_clbits, 1/2) and Acc(self.gates, 1/2))
+            Invariant(Acc(rep.num_qubits) and Acc(rep.num_clbits) and Acc(rep.gates))
+            Invariant(rep.num_qubits == self.num_qubits and rep.num_clbits == self.num_clbits)
+            Invariant(0 <= i and i <= k)
+            Invariant(rep.gates == i * self.gates)
+            rep.compose(self)
+            i = i + 1
+        return rep    
