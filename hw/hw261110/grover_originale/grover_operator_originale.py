@@ -9,6 +9,7 @@
 # Any modifications or derivative works of this code must retain this
 # copyright notice, and modified files need to carry a notice indicating
 # that they have been altered from the originals.
+#
 # Modificato da Caterina Chiavellati: versione semplificata per la verifica con Nagini
 
 """The Grover operator."""
@@ -287,9 +288,7 @@ class GroverOperator(QuantumCircuit):
 
 
 # TODO use the oracle compiler or the bit string oracle
-def _zero_reflection(
-    num_state_qubits: int, qubits: List[int], mcx_mode: Optional[str] = None
-) -> QuantumCircuit:
+def _zero_reflection( num_state_qubits: int, qubits: List[int], mcx_mode: Optional[str] = None) -> QuantumCircuit:
     qr_state = QuantumRegister(num_state_qubits, "state")
     reflection = QuantumCircuit(qr_state, name="S_0")
 

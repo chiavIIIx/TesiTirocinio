@@ -42,27 +42,6 @@ tesi_tirocinio/
 ### hw261110: verifica del codice originale di Qiskit (Grover, poi QFT e Shor)
 
 * **Consegna:** prendere il codice con cui Qiskit implementa Grover, QFT e Shor e verificarne con Nagini dei limiti sul numero di porte, come fatto per Deutsch. Si parte da Grover.
-* **Codice di partenza** (da qiskit-terra 0.46, ambiente `qiskit-book`), copiato senza modifiche in `grover/`:
-    * `grover_operator_originale.py`: da `qiskit/circuit/library/grover_operator.py`, classe `GroverOperator` (una singola iterazione di Grover)
-    * `grover_originale.py`: da `qiskit/algorithms/amplitude_amplifiers/grover.py`, classe `Grover` (algoritmo completo; interessa solo `construct_circuit`)
-
-* **Trasformazioni rispetto al codice originale** (regole candidate per il traduttore automatico):
-    * `mcx_mode` fissato a `"noancilla"` (il default di `GroverOperator`): il blocco delle ancille e il parametro spariscono
-    * registri, nomi e `name=` tolti: `QuantumCircuit(QuantumRegister(n), name=...)` diventa `QuantumCircuit(n, 0)`
-    * metodi su liste separati da quelli su qubit singolo: `x(lista)` diventa `x_list(lista)`, `h(lista)` diventa `h_list(lista)`
-    * indici negativi e slicing riscritti: `qubits[-1]` diventa `qubits[len(qubits) - 1]`, `qubits[:-1]` diventa `qubits[:len(qubits) - 1]`
-    * una property che usa `self` solo in lettura diventa una funzione libera che riceve quei dati come parametri (`state_preparation` diventa `_state_preparation(num_state_qubits, qubits)`)
-    * rimosso il ramo con la preparazione di stato fornita dall'utente: si considera il Grover standard con le H
-* **Correzione di un errore del codice originale:** in `_zero_reflection`, con un solo qubit di riflessione, Qiskit applica `z(0)` invece di `z(qubits[0])`. Con `reflection_qubits = [3]` la riflessione agirebbe sul qubit sbagliato. Nella versione verificata si usa `z(qubits[0])`; il numero di porte non cambia, quindi il modello attuale non può rilevare l'errore.
-* **Metodi aggiunti allo stub di `QuantumCircuit`:** `z`, `x_list`, `h_list`, `mcx`, `inverse`, `compose`.
-* **Semplificazioni del modello:**
-    * `mcx` conta come una porta e non controlla che il target sia diverso dai controlli
-    * `compose` modella solo `inplace=True`, ignora la lista dei qubit e i bit classici, e non permette di comporre un circuito con se stesso
-    * `inverse` restituisce un circuito nuovo con gli stessi qubit e le stesse porte
-* **Decisioni aperte da discutere con il relatore:**
-    * contare le porte "impacchettate" (`_build` chiude l'operatore in un unico gate con `to_gate()`) o "srotolate"
-    * se barrier e misure contano come porte
-    * se MCX conta come una porta o come la sua decomposizione (che dipende da `mcx_mode`)
 
 ## Ambienti
 
