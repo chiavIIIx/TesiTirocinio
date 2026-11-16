@@ -51,7 +51,7 @@ def _zero_reflection(num_state_qubits: int, qubits: List[int]) -> QuantumCircuit
 
     reflection.x_list(qubits)
     if len(qubits) == 1:
-        reflection.z(qubits[0])
+        reflection.z(0)
     else:
         target = qubits[len(qubits) - 1]
         controls = qubits[:len(qubits) - 1]
